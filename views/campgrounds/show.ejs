@@ -1,0 +1,87 @@
+<% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/Stylesheets/starability-checkmark.css">
+<div class="row d-flex justify-content-center">
+  <div class="card mb-3 p-0 border-success w-75">
+    <div class="row g-0">
+      <div id="campgroundCarousel" class="carousel slide">
+          <div class="carousel-inner">
+            <% campground.images.forEach((img,i)=> { %>
+            <div class="carousel-item <%= i === 0 ? 'active' : "" %>">
+              <img src="<%= img.url %>" class="img-fluid rounded-start d-block w-100" style="object-fit: cover;" alt="...">
+            </div>
+            <% }) %>
+          </div>
+          <% if (campground.images.length > 1) { %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          <% } %>
+         
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card-body ">
+          <h4 class="card-title text-center mb-3"><%= campground.title %></h4>
+          <h5 class="card-text text-secondary text-center mb-5"><%= campground.location %></h5>
+          <p class="card-text lead mb-5 text-center"><%= campground.description %></p>
+          <p class="text-center text-success h6 mb-5">price: <%= campground.price %>$</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between border-success">
+          <a class="btn btn-primary mt-3" href="/campgrounds">Index</a>
+          <% if (currentUser && campground.author.equals(currentUser._id)) { %>
+          <a class="btn btn-primary mt-3" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+          <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+            <button class="btn btn-danger mt-3">Delete</button>
+            <% } %>
+          </form>
+          <a class="btn btn-success mt-3" href="/campgrounds/<%= campground._id %>/reviews">Review</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+  <div id="map" style="width: 75%; height: 300px;"></div>
+  </div>
+  <% if (campground.reviews.length) { %>
+  <h2 class="text-center mb-4 mt-3">Reviews</h2>
+  <% } %>
+  <div class="row">
+    <% for( let review of campground.reviews ) { %>
+    <div class="col-12 col-md-6 ">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <div class="d-flex justify-content-center">
+              <p class="starability-result" data-rating="<%= review.rating %>">
+                Rated: <%= review.rating %>
+              </p>
+            </div>
+          </h5>
+          <h5 class="card-text text-secondary text-center mb-3 text-center">By: <%= review.author.username %></h5>
+          <p class="card-text ">
+            <%= review.body %>
+          </p>
+          <% if (currentUser && review.author.equals(currentUser)) { %>
+          <form action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+
+<%-"<script>"%>
+const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+const campground = <%- JSON.stringify(campground) %>;
+<%-"</script>"%>
+
+<script src="/Javascripts/showPageMap.js"></script>
