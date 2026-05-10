@@ -38,7 +38,7 @@
         <p class="text-center text-success h6 mb-5">price: <%= campground.price %>$</p>
       </div>
       <div class="card-footer d-flex  justify-content-between border-success flex-column flex-md-row align-items-stretch">
-        <a class="btn btn-primary mt-3 " href="/campgrounds">Index</a>
+        <a class="btn btn-primary mt-3 " href="/campgrounds">Home page</a>
         <% if (currentUser && campground.author.equals(currentUser._id)) { %>
         <a class="btn btn-primary mt-3" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
         <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post" class="m-0 d-grid d-md-block">
