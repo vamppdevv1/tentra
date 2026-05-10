@@ -6,7 +6,11 @@
 <%for(let campground of Campgrounds){  %>
   <div class="col">
     <div class="card h-100 border border-success cardh border-1 rounded-2">
-      <img src="<%= campground.images[0].url %>" class="card-img-top" alt="...">
+      <% if (campground.images.length) { %>
+         <img src="<%= campground.images[0].url %>" class="card-img-top" alt="...">
+      <% }else {%>
+         <img src="https://res.cloudinary.com/du7o3bbcv/image/upload/v1778367464/Tentra/wdpvutf2fu0253gikmxr.jpg" class="card-img-top" alt="...">
+        <% } %>
       <div class="card-body">
         <h4 class="card-title text-center"><%= campground.title %></h4>
         <h5 class="card-text text-secondary text-center"><%= campground.location %></h5>
