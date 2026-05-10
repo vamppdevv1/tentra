@@ -31,6 +31,7 @@ A full-stack campground listing and review platform where users can discover, cr
 **Frontend**
 - Bootstrap 5
 - MapTiler SDK (maps)
+- Html/css
 
 ---
 
