@@ -1,59 +1,162 @@
 <% layout("layouts/boilerplate") %>
+
 <div class="container d-flex justify-content-center mb-4 ">
   <div class="card text-center border-success " style="width: 800px;">
+
     <div class="card-header border-bottom border-success">
-      <h1 class="text-center">New Campground</h1>
+      <h1 id="new-campground-heading" class="text-center">
+        New Campground
+      </h1>
     </div>
+
     <div class="card-body">
       <div class="row">
         <div class="d-flex justify-content-center">
+
           <div class="col-md-6">
-            <form action="/campgrounds" method="post" novalidate class="needs-validation row g-3" enctype="multipart/form-data">
+
+            <form 
+              action="/campgrounds"
+              method="post"
+              novalidate
+              class="needs-validation row g-3"
+              enctype="multipart/form-data"
+              aria-labelledby="new-campground-heading"
+            >
+
               <div class="mb-2 col-md-6">
-                <label class="form-label" for="title"> Title:</label>
-                <input class="form-control border-secondary-subtle" type="text" id="title" name="campground[title]" required />
+
+                <label class="form-label" for="title">
+                  Title:
+                </label>
+
+                <input
+                  class="form-control border-secondary-subtle"
+                  type="text"
+                  id="title"
+                  name="campground[title]"
+                  required
+                  aria-required="true"
+                />
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
+
               </div>
+
               <div class="mb-2 col-md-6">
-                <label class="form-label" for="location"> Location:</label>
-                <input class="form-control border-secondary-subtle" type="text" id="location" name="campground[location]" required />
+
+                <label class="form-label" for="location">
+                  Location:
+                </label>
+
+                <input
+                  class="form-control border-secondary-subtle"
+                  type="text"
+                  id="location"
+                  name="campground[location]"
+                  required
+                  aria-required="true"
+                />
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
+
               </div>
+
               <div class="mb-2">
-                <label class="form-label" for="price">Campground price</label>
+
+                <label class="form-label" for="price">
+                  Campground price
+                </label>
+
                 <div class="input-group mb-3">
-                  <span class="input-group-text border-secondary-subtle" id="price-label">$</span>
-                  <input id="price" type="text" placeholder="0.00" class="form-control border-secondary-subtle" aria-label="Price" name="campground[price]" aria-describedby="price-label" required />
+
+                  <span
+                    class="input-group-text border-secondary-subtle"
+                    id="price-label"
+                  >
+                    $
+                  </span>
+
+                  <input
+                    id="price"
+                    type="text"
+                    placeholder="0.00"
+                    class="form-control border-secondary-subtle"
+                    aria-label="Campground price"
+                    name="campground[price]"
+                    aria-describedby="price-label"
+                    required
+                    aria-required="true"
+                  />
+
                   <div class="valid-feedback">
                     Looks Good!
                   </div>
+
                 </div>
+
               </div>
+
               <div class="mb-2">
-                <label class="form-label" for="description"> Description:</label>
-                <textarea class="form-control border-secondary-subtle" id="description" name="campground[description]" required rows="4"></textarea>
+
+                <label class="form-label" for="description">
+                  Description:
+                </label>
+
+                <textarea
+                  class="form-control border-secondary-subtle"
+                  id="description"
+                  name="campground[description]"
+                  required
+                  rows="4"
+                  aria-required="true"
+                ></textarea>
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
+
               </div>
+
               <div class="mb-3">
-  <label for="formFile" class="form-label">Images:</label>
-  <input class="form-control" type="file" id="formFile" name="image" multiple>
-</div>
-              <div class="mb-2">
+
+                <label for="formFile" class="form-label">
+                  Images:
+                </label>
+
+                <input
+                  class="form-control"
+                  type="file"
+                  id="formFile"
+                  name="image"
+                  multiple
+                  accept="image/*"
+                  aria-label="Upload campground images"
+                >
+
               </div>
 
               <div>
-                <button class="btn btn-success">Submit</button>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  aria-label="Submit new campground"
+                >
+                  Submit
+                </button>
               </div>
+
             </form>
+
           </div>
+
         </div>
       </div>
     </div>
+
   </div>
 </div>

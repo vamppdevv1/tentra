@@ -1,42 +1,121 @@
 <% layout("layouts/boilerplate") %>
-<% layout("layouts/boilerplate") %>
+
 <div class="card mb-3 border-dark border-1 rounded-3" style="height: auto;">
+
   <div class="row g-0 h-100">
-    <div class="col-md-5 ">
-      <img src="Pictures/Data_security_01.jpg" class="img-fluid rounded h-100 w-100 d-none d-md-block right-shadow" style="object-fit: cover;" alt="...">
+
+    <div class="col-md-5">
+
+      <img
+        src="Pictures/Data_security_01.jpg"
+        class="img-fluid rounded h-100 w-100 d-none d-md-block right-shadow"
+        style="object-fit: cover;"
+        alt="Illustration for account registration security"
+      >
+
     </div>
+
     <div class="col-md-7">
-      <div class="card-body ">
-        <h3 class="card-title text-center my-3 display-6">Register</h3>
-        <form action="/register" class="needs-validation" novalidate method="post">
-          <div class="mb-3 text-center ">
+
+      <div class="card-body">
+
+        <h3 id="register-heading" class="card-title text-center my-3 display-6">
+          Register
+        </h3>
+
+        <form
+          action="/register"
+          class="needs-validation"
+          novalidate
+          method="post"
+          aria-labelledby="register-heading"
+        >
+
+          <div class="mb-3 text-center">
+
             <div class="mb-3">
-              <label class="form-label h6" for="email"> Email:</label>
-              <input class="form-control w-75 mx-auto border-secondary-subtle border-opacity-50" type="email" id="email" name="email" required />
+
+              <label class="form-label h6" for="email">
+                Email:
+              </label>
+
+              <input
+                class="form-control w-75 mx-auto border-secondary-subtle border-opacity-50"
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+              />
+
               <div class="valid-feedback">
                 Looks Good!
               </div>
+
             </div>
-            <div class="mb-3 ">
-              <label class="form-label h6" for="username"> Username:</label>
-              <input class="form-control w-75 mx-auto border-secondary-subtle border-opacity-50" type="text" id="username" name="username" required />
+
+            <div class="mb-3">
+
+              <label class="form-label h6" for="username">
+                Username:
+              </label>
+
+              <input
+                class="form-control w-75 mx-auto border-secondary-subtle border-opacity-50"
+                type="text"
+                id="username"
+                name="username"
+                required
+                aria-required="true"
+              />
+
               <div class="valid-feedback">
                 Looks Good!
               </div>
+
             </div>
-            <div class=" ">
-              <label class="form-label h6" for="password"> Password:</label>
-              <input class="form-control w-75 mx-auto border-secondary-subtle border-opacity-50" type="password" id="password" name="password" required />
+
+            <div>
+
+              <label class="form-label h6" for="password">
+                Password:
+              </label>
+
+              <input
+                class="form-control w-75 mx-auto border-secondary-subtle border-opacity-50"
+                type="password"
+                id="password"
+                name="password"
+                required
+                aria-required="true"
+              />
+
               <div class="valid-feedback">
                 Looks Good!
               </div>
+
             </div>
-            <div class=" justify-content-center">
-              <button class="btn btn-success btn-lg my-4">Register</button>
+
+            <div class="justify-content-center">
+
+              <button
+                type="submit"
+                class="btn btn-success btn-lg my-4"
+                aria-label="Register a new account"
+              >
+                Register
+              </button>
+
             </div>
+
           </div>
+
         </form>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
