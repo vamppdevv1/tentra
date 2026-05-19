@@ -31,6 +31,7 @@ A full-stack campground listing and review platform where users can discover, cr
 **Frontend**
 - Bootstrap 5
 - MapTiler SDK (maps)
+- Html/css
 
 ---
 
@@ -98,8 +99,3 @@ This app is deployed on **Vercel** with MongoDB Atlas as the database.
 
 This project is based on the **YelpCamp** project from Colt Steele's Web Developer Bootcamp. It has been restyled with a custom UI and small personal tweaks. It's my first full-stack project and a big part of my learning journey — still a work in progress!
 
----
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
