@@ -1,22 +1,42 @@
 <% layout("layouts/boilerplate") %>
+
 <link rel="stylesheet" href="/Stylesheets/starability-checkmark.css">
+
 <div class="container d-flex justify-content-center mb-4">
+
   <div class="card text-center border-success" style="width: 800px">
+
     <div class="card-header border-bottom border-success">
-      <h1 class="text-center">Leave your review</h1>
+      <h1 id="review-heading" class="text-center">
+        Leave your review
+      </h1>
     </div>
+
     <div class="card-body">
       <div class="row">
         <div class="d-flex justify-content-center">
+
           <div class="col-md-6">
+
             <form
               action="/campgrounds/<%= campground._id %>/reviews"
               method="post"
               novalidate
               class="needs-validation row g-3"
+              aria-labelledby="review-heading"
             >
+
               <div class="d-flex justify-content-center">
-                <fieldset class="starability-checkmark">
+
+                <fieldset
+                  class="starability-checkmark"
+                  aria-label="Campground rating"
+                >
+
+                  <legend class="visually-hidden">
+                    Campground rating
+                  </legend>
+
                   <input
                     type="radio"
                     id="no-rate"
@@ -24,60 +44,104 @@
                     name="review[rating]"
                     value="1"
                     checked
-                    aria-label="No rating."
+                    aria-label="No rating"
                   />
+
                   <input
                     type="radio"
                     id="first-rate1"
                     name="review[rating]"
                     value="1"
                   />
-                  <label for="first-rate1" title="Terrible">1 star</label>
+
+                  <label for="first-rate1" title="Terrible">
+                    1 star
+                  </label>
+
                   <input
                     type="radio"
                     id="first-rate2"
                     name="review[rating]"
                     value="2"
                   />
-                  <label for="first-rate2" title="Not good">2 stars</label>
+
+                  <label for="first-rate2" title="Not good">
+                    2 stars
+                  </label>
+
                   <input
                     type="radio"
                     id="first-rate3"
                     name="review[rating]"
                     value="3"
                   />
-                  <label for="first-rate3" title="Average">3 stars</label>
+
+                  <label for="first-rate3" title="Average">
+                    3 stars
+                  </label>
+
                   <input
                     type="radio"
                     id="first-rate4"
                     name="review[rating]"
                     value="4"
                   />
-                  <label for="first-rate4" title="Very good">4 stars</label>
+
+                  <label for="first-rate4" title="Very good">
+                    4 stars
+                  </label>
+
                   <input
                     type="radio"
                     id="first-rate5"
                     name="review[rating]"
                     value="5"
                   />
-                  <label for="first-rate5" title="Amazing">5 stars</label>
+
+                  <label for="first-rate5" title="Amazing">
+                    5 stars
+                  </label>
+
                 </fieldset>
+
               </div>
+
               <div class="mb-3">
-                <label class="form-label" for="body">Review Text:</label>
+
+                <label class="form-label" for="body">
+                  Review Text:
+                </label>
+
                 <textarea
                   class="form-control border-secondary-subtle"
                   name="review[body]"
                   id="body"
                   required
+                  aria-required="true"
                 ></textarea>
-                <div class="valid-feedback">Looks Good!</div>
+
+                <div class="valid-feedback">
+                  Looks Good!
+                </div>
+
               </div>
-              <button class="btn btn-success">Submit</button>
+
+              <button
+                type="submit"
+                class="btn btn-success"
+                aria-label="Submit review"
+              >
+                Submit
+              </button>
+
             </form>
+
           </div>
+
         </div>
       </div>
     </div>
+
   </div>
+
 </div>

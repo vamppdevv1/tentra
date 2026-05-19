@@ -1,72 +1,193 @@
 <% layout("layouts/boilerplate") %>
 
-<% layout("layouts/boilerplate") %>
-<div class="container d-flex justify-content-center mb-4 ">
-  <div class="card text-center border-success " style="width: 800px;">
+<div class="container d-flex justify-content-center mb-4">
+  <div class="card text-center border-success" style="width: 800px;">
+    
     <div class="card-header border-bottom border-success">
-      <h1 class="text-center">Edit Campground</h1>
+      <h1 id="edit-heading" class="text-center">Edit Campground</h1>
     </div>
+
     <div class="card-body">
       <div class="row">
         <div class="d-flex justify-content-center">
           <div class="col-md-6">
-            <form action="/campgrounds/<%= campground._id%>?_method=PUT" method="post" novalidate class="needs-validation row g-3" enctype="multipart/form-data">
+
+            <form 
+              action="/campgrounds/<%= campground._id%>?_method=PUT" 
+              method="post"
+              novalidate
+              class="needs-validation row g-3"
+              enctype="multipart/form-data"
+              aria-labelledby="edit-heading"
+            >
+
               <div class="mb-2 col-md-6">
-                <label class="form-label" for="title"> Title:</label>
-                <input class="form-control border-secondary-subtle" value="<%= campground.title %>" type="text" id="title" name="campground[title]" required />
+                <label class="form-label" for="title">Title:</label>
+
+                <input
+                  class="form-control border-secondary-subtle"
+                  value="<%= campground.title %>"
+                  type="text"
+                  id="title"
+                  name="campground[title]"
+                  required
+                  aria-required="true"
+                />
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
               </div>
+
               <div class="mb-2 col-md-6">
-                <label class="form-label" for="location"> Location:</label>
-                <input class="form-control border-secondary-subtle" value="<%= campground.location %>" type="text" id="location" name="campground[location]" required />
+                <label class="form-label" for="location">Location:</label>
+
+                <input
+                  class="form-control border-secondary-subtle"
+                  value="<%= campground.location %>"
+                  type="text"
+                  id="location"
+                  name="campground[location]"
+                  required
+                  aria-required="true"
+                />
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
               </div>
+
               <div class="mb-2">
-                <label class="form-label" for="price">Campground price</label>
+                <label class="form-label" for="price">
+                  Campground price
+                </label>
+
                 <div class="input-group mb-3">
-                  <span class="input-group-text border-secondary-subtle" id="price-label">$</span>
-                  <input id="price" type="text" value="<%= campground.price %>" class="form-control border-secondary-subtle" aria-label="Price" name="campground[price]" aria-describedby="price-label" required />
+                  <span 
+                    class="input-group-text border-secondary-subtle"
+                    id="price-label"
+                  >
+                    $
+                  </span>
+
+                  <input
+                    id="price"
+                    type="text"
+                    value="<%= campground.price %>"
+                    class="form-control border-secondary-subtle"
+                    aria-label="Campground price"
+                    name="campground[price]"
+                    aria-describedby="price-label"
+                    required
+                    aria-required="true"
+                  />
+
                   <div class="valid-feedback">
                     Looks Good!
                   </div>
                 </div>
               </div>
+
               <div class="mb-2">
-                <label class="form-label" for="description"> Description:</label>
-                <textarea class="form-control border-secondary-subtle" id="description" name="campground[description]" required rows="4"><%= campground.description %></textarea>
+                <label class="form-label" for="description">
+                  Description:
+                </label>
+
+                <textarea
+                  class="form-control border-secondary-subtle"
+                  id="description"
+                  name="campground[description]"
+                  required
+                  rows="4"
+                  aria-required="true"
+                ><%= campground.description %></textarea>
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
               </div>
+
               <div class="mb-2">
                 <div class="mb-3">
-                  <label for="formFile" class="form-label">Add Images:</label>
-                  <input class="form-control" type="file" id="formFile" name="image" multiple>
+
+                  <label for="formFile" class="form-label">
+                    Add Images:
+                  </label>
+
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="formFile"
+                    name="image"
+                    multiple
+                    accept="image/*"
+                  >
                 </div>
+
                 <div class="valid-feedback">
                   Looks Good!
                 </div>
               </div>
-              <h6>delete images:</h3>
-                <div class="mb-3">
-                  <% campground.images.forEach((img,i)=> { %>
-                  <img src="<%= img.url %>" class="img-fluid mb-2 img-thumbnail" alt="">
-                  <div class="form-check-block">
-                    <label for="image-<%=i%>">delete</label>
-                    <input type="checkbox" class="form-check-input border-danger" id="image-<%=i%>" name="deleteImages[]" value="<%= img.filename %>">
+
+              <fieldset class="mb-3">
+                <legend class="fs-6">
+                  Delete Images
+                </legend>
+
+                <% campground.images.forEach((img, i) => { %>
+
+                  <div class="mb-3">
+
+                    <img
+                      src="<%= img.url %>"
+                      class="img-fluid mb-2 img-thumbnail"
+                      alt="Campground image <%= i + 1 %>"
+                    >
+
+                    <div class="form-check">
+
+                      <input
+                        type="checkbox"
+                        class="form-check-input border-danger"
+                        id="image-<%=i%>"
+                        name="deleteImages[]"
+                        value="<%= img.filename %>"
+                      >
+
+                      <label
+                        class="form-check-label"
+                        for="image-<%=i%>"
+                      >
+                        Delete this image
+                      </label>
+
+                    </div>
+
                   </div>
-                  <% }) %>
-                </div>
-              
+
+                <% }) %>
+              </fieldset>
+
               <div>
-                <button class="btn btn-success">Submit</button>
-                <a class="btn btn-success" href="/campgrounds/<%= campground._id %>">Back</a>
+                <button 
+                  type="submit"
+                  class="btn btn-success"
+                  aria-label="Submit edited campground"
+                >
+                  Submit
+                </button>
+
+                <a
+                  class="btn btn-success"
+                  href="/campgrounds/<%= campground._id %>"
+                  aria-label="Go back to campground details"
+                >
+                  Back
+                </a>
               </div>
+
             </form>
+
           </div>
         </div>
       </div>
